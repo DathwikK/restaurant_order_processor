@@ -1,7 +1,7 @@
 # Restaurant Order Processor
 
 ## Overview
-The **Order Processor** is a simple Python script that reads a JSON file containing customer orders and produces two summary files:
+The **Restaurant Order Processor** is a simple Python script that reads a JSON file containing customer orders and produces two summary files:
 - `customers.json` — a list of customers mapped by phone number  
 - `items.json` — a summary of each item’s price and how many times it was ordered
 
