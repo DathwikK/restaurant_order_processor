@@ -1,29 +1,51 @@
-# Dosa Order Processor 
+# Order Processor
 
-This project processes a year's worth of Dosa restaurant orders to generate two summary reports: one for customers and another for menu items. It is designed to help the restaurant organize its customer and item data more efficiently.
+This script processes an orders JSON file and generates two output files: `customers.json` and `items.json`.
 
----
+## Usage
 
-##  Overview
-The script reads a JSON file of restaurant orders and creates:
-- **`customers.json`** — Maps each customer's phone number to their name.
-- **`items.json`** — Summarizes each menu item's price and total number of times ordered.
+python order_processor.py <orders_file.json>
 
-Both outputs are stored as JSON files in the project directory.
+Example: python order_processor.py orders.json
 
----
+## Input Format
 
-##  Input Format
-The input JSON file should contain an array of orders, where each order looks like this:
+The input file should be a JSON array of orders.  
+Each order must have:
+- `name`: customer name  
+- `phone`: customer phone number  
+- `items`: list of ordered items with `name` and `price`
 
-```json
+Example:
+[
 {
-    "timestamp": 1702219784,
-    "name": "Damodhar",
-    "phone": "732-555-5509",
-    "items": [
-        {"name": "Cheese Madurai Masala Dosa", "price": 13.95},
-        {"name": "Onion Chilli Masala Dosa", "price": 11.95}
-    ],
-    "notes": "extra spicy"
+"name": "Alice Johnson",
+"phone": "+1234567890",
+"items": [
+{"name": "Coffee", "price": "3.50"},
+{"name": "Bagel", "price": "2.00"}
+]
 }
+]
+
+## Output Files
+
+### customers.json
+Contains a mapping of phone numbers to customer names.
+
+{
+"+1234567890": "Alice Johnson"
+}
+
+### items.json
+Contains each item’s price and the number of orders it appears in.
+
+{
+"Coffee": {"price": 3.5, "orders": 1},
+"Bagel": {"price": 2.0, "orders": 1}
+}
+
+## Requirements
+
+- Python 3
+- Uses built-in `json` and `sys` modules
