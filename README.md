@@ -1,51 +1,103 @@
-# Order Processor
+# Restaurant Order Processor
 
-This script processes an orders JSON file and generates two output files: `customers.json` and `items.json`.
+## Overview
+The **Order Processor** is a simple Python script that reads a JSON file containing customer orders and produces two summary files:
+- `customers.json` — a list of customers mapped by phone number  
+- `items.json` — a summary of each item’s price and how many times it was ordered
+
+This project is designed to make it easier to analyze basic order data for small businesses or internal reporting.
+
+## Design
+The script follows a straightforward design:
+1. **Input Handling** — Takes an input JSON file from the command line.
+2. **Data Loading** — Reads and parses order data using Python’s built-in `json` module.
+3. **Customer Extraction** — Creates a unique list of customers based on their phone numbers.
+4. **Item Summary** — Counts item occurrences and stores their latest recorded price.
+5. **Output Files** — Writes results to `customers.json` and `items.json` for further reference.
+
+The program uses only standard Python libraries (`json` and `sys`), making it lightweight and portable.
 
 ## Usage
-
+To run the script, use the command:
 python order_processor.py <orders_file.json>
 
-Example: python order_processor.py orders.json
+Example:
+python order_processor.py orders.json
+
+After running, two new files will be created in the current directory:
+- `customers.json`
+- `items.json`
 
 ## Input Format
+The input JSON file should contain an array of orders.  
+Each order must include the customer’s name, phone number, and a list of items.
 
-The input file should be a JSON array of orders.  
-Each order must have:
-- `name`: customer name  
-- `phone`: customer phone number  
-- `items`: list of ordered items with `name` and `price`
-
-Example:
+Example `example_orders.json`:
 [
-{
-"name": "Alice Johnson",
-"phone": "+1234567890",
-"items": [
-{"name": "Coffee", "price": "3.50"},
-{"name": "Bagel", "price": "2.00"}
-]
-}
+    {
+        "timestamp": 1702219784,
+        "name": "Damodhar",
+        "phone": "732-555-5509",
+        "items": [
+            {
+                "name": "Cheese Madurai Masala Dosa",
+                "price": 13.95
+            },
+            {
+                "name": "Onion Chilli Masala Dosa",
+                "price": 11.95
+            }
+        ],
+        "notes": "extra spicy"
+    },
+    {
+        "timestamp": 1684443264,
+        "name": "Tom",
+        "phone": "609-555-2301",
+        "items": [
+            {
+                "name": "Cheese & Onion Chilli Masala Dosa",
+                "price": 12.95
+            },
+            {
+                "name": "Onion Rava Mysore Masala Dosa",
+                "price": 14.95
+            }
+        ],
+        "notes": ""
+    }
 ]
 
 ## Output Files
 
 ### customers.json
-Contains a mapping of phone numbers to customer names.
-
+Contains phone numbers mapped to customer names:
 {
-"+1234567890": "Alice Johnson"
+    "732-555-5509": "Damodhar",
+    "609-555-2301": "Tom",
+    "609-555-5508": "Kunal",
+    "609-555-0326": "Bhargavi",
+    "732-555-1919": "Shanmukhi",
+    "732-555-4109": "Matt"
 }
 
 ### items.json
-Contains each item’s price and the number of orders it appears in.
-
+Contains item names, their price, and the number of times each was ordered:
 {
-"Coffee": {"price": 3.5, "orders": 1},
-"Bagel": {"price": 2.0, "orders": 1}
+    "Cheese Madurai Masala Dosa": {
+        "price": 13.95,
+        "orders": 1232
+    },
+    "Onion Chilli Masala Dosa": {
+        "price": 11.95,
+        "orders": 1234
+    },
+    "Cheese & Onion Chilli Masala Dosa": {
+        "price": 12.95,
+        "orders": 1200
+    }
 }
 
 ## Requirements
-
-- Python 3
-- Uses built-in `json` and `sys` modules
+- Python 3.7 or higher
+- No external dependencies
