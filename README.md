@@ -28,6 +28,10 @@ After running, two new files will be created in the current directory:
 - `customers.json`
 - `items.json`
 
+In order to view the contents of these files use these commands:
+cat customers.json
+cat items.json
+
 ## Input Format
 The input JSON file should contain an array of orders.  
 Each order must include the customer’s name, phone number, and a list of items.
