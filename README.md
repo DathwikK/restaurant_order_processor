@@ -29,8 +29,8 @@ After running, two new files will be created in the current directory:
 - `items.json`
 
 In order to view the contents of these files use these commands:
-cat customers.json
-cat items.json
+- `cat customers.json`
+- `cat items.json`
 
 ## Input Format
 The input JSON file should contain an array of orders.  
