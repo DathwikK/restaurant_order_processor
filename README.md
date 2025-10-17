@@ -23,8 +23,8 @@ To run the script, use the command:
 Use command python or python3 based on the system you are running it on.
 
 
-Example:
-python3 order_processor.py example_orders.json
+- `Example:
+python3 order_processor.py example_orders.json`
 
 After running, two new files will be created in the current directory:
 - `customers.json`
