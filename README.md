@@ -39,8 +39,8 @@ The input JSON file should contain an array of orders.
 Each order must include the customer’s name, phone number, and a list of items.
 
 Example `example_orders.json`:
-[
-    {
+`[
+     {
         "timestamp": 1702219784,
         "name": "Damodhar",
         "phone": "732-555-5509",
@@ -72,7 +72,7 @@ Example `example_orders.json`:
         ],
         "notes": ""
     }
-]
+]`
 
 ## Output Files
 
