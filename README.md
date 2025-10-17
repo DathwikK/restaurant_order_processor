@@ -19,10 +19,12 @@ The program uses only standard Python libraries (`json` and `sys`), making it li
 
 ## Usage
 To run the script, use the command:
-python order_processor.py <orders_file.json>
+- `<python/python3> order_processor.py <example_orders.json>`
+Use command python or python3 based on the system you are running it on.
+
 
 Example:
-python order_processor.py orders.json
+python3 order_processor.py example_orders.json
 
 After running, two new files will be created in the current directory:
 - `customers.json`
@@ -76,18 +78,18 @@ Example `example_orders.json`:
 
 ### customers.json
 Contains phone numbers mapped to customer names:
-{
+`{
     "732-555-5509": "Damodhar",
     "609-555-2301": "Tom",
     "609-555-5508": "Kunal",
     "609-555-0326": "Bhargavi",
     "732-555-1919": "Shanmukhi",
     "732-555-4109": "Matt"
-}
+}`
 
 ### items.json
 Contains item names, their price, and the number of times each was ordered:
-{
+`{
     "Cheese Madurai Masala Dosa": {
         "price": 13.95,
         "orders": 1232
@@ -100,7 +102,7 @@ Contains item names, their price, and the number of times each was ordered:
         "price": 12.95,
         "orders": 1200
     }
-}
+}`
 
 ## Requirements
 - Python 3.7 or higher
